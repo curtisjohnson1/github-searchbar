@@ -20,7 +20,7 @@ npm install
 run package script
 
 ```javascript
-npm dev
+npm run dev
 ```
 
 Follow the below link in your browser
@@ -39,7 +39,7 @@ npm test
 
 ## Built Using
 
-[React](https://facebook.github.io/react/) - A JavaScript library for building user interfaces
-[Redux](http://redux.js.org/) - A predictable state container for JavaScript apps
-[Axios](https://github.com/mzabriskie/axios) - A promise based HTTP client for the browser and node.js
+* [React](https://facebook.github.io/react/) - A JavaScript library for building user interfaces
+* [Redux](http://redux.js.org/) - A predictable state container for JavaScript apps
+* [Axios](https://github.com/mzabriskie/axios) - A promise based HTTP client for the browser and node.js
 
