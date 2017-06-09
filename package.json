@@ -4,14 +4,16 @@
   "description": "a reimplementation of the github searchbar",
   "main": "index.js",
   "scripts": {
-    "precommit": "npm un test && npm run lint",
+    "precommit": "npm run test && npm run lint",
     "lint": "eslint ./",
-    "dev": "webpack-dev-server -d --config webpack.config.js --progress --colors"
+    "dev": "webpack-dev-server -d --config webpack.config.js --progress --colors",
+    "test": "mocha ./spec --compilers js:babel-core/register"
   },
   "author": "Curtis Johnson",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
+    "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
