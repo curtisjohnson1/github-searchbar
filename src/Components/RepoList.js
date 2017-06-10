@@ -6,15 +6,18 @@ import RepoCard from './RepoCard';
 const RepoList = (props) => {
     return (
         <div>
-            {generateRepoCards(props.repos)}
+            {repoCount(props.repos.total_count)}
+            {generateRepoCards(props.repos.items)}
         </div>
     );
-
-
 };
 
 const generateRepoCards = (repos) => {
-    if (!repos) return <div>Please search for a repo...</div> ;
+    if (!repos) return (
+        <div>
+            <h1>Please search for a repo...</h1>
+        </div>
+    );
 
     return repos.map((repo, i) => {
         return (
@@ -23,8 +26,16 @@ const generateRepoCards = (repos) => {
     });
 };
 
+const repoCount = (count) => {
+    if (count) return (
+        <div className="count-header">
+            <h4>{count} repositories found</h4>
+        </div>
+    );
+};
+
 RepoList.propTypes = {
-    repos: PropTypes.array
+    repos: PropTypes.object
 };
 
 export default RepoList;

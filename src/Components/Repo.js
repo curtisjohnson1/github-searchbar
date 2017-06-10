@@ -1,42 +1,64 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown';
 
-import { fetchUserRepo, fetchRepo } from '../actions/actions';
+import { fetchUserRepo, fetchRepo, fetchReadme } from '../actions/actions';
 
 class Repo extends Component {
 
-    componentDidMount () {
+    componentWillMount () {
+        this.props.fetchReadme (this.props.params.user, this.props.params.repo);
         this.props.fetchUserRepo (this.props.params.user, this.props.params.repo);
     }
 
     render () {
         return (
-            <div className="card">
+            <div className="repo">
 
                 <header className="card-header">
-                    <h1>{this.props.repo.full_name}</h1>
+                    <div className="card-info">
+                        <a>{this.props.repo.full_name}</a>
+                        <p>{this.props.repo.description}</p>
+                    </div>
                 </header>
 
                 <div className="card-content">
-                    <div className="content">
-                        <h5>{this.props.repo.description}</h5>
-                        <h5>{this.props.repo.language}</h5>
-                        <li>Issues: {this.props.repo.open_issues_count}</li>
-                        <li>Watchers: {this.props.repo.subscribers_count}</li>
-                        <li>Forks: {this.props.repo.forks_count}</li>
-                        <li>Stars: {this.props.repo.stargazers_count}</li>
+                    <div>
+                        <p>{this.checkLanguage(this.props.repo.language)}</p>
+                        <ul className="repo-info">
+                            <li className=""><p>Issues: {this.props.repo.open_issues_count}</p></li>
+                            <li className=""><p>Watchers: {this.props.repo.subscribers_count}</p></li>
+                            <li className=""><p>Forks: {this.props.repo.forks_count}</p></li>
+                            <li className=""><p>Stars: {this.props.repo.stargazers_count}</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="card-content">
+                    <div>
+                        <ReactMarkdown 
+                            className="repo-info"
+                            source={this.props.readmeInfo.readme}/>
                     </div>
                 </div>
             </div>
         );
     }
+
+    checkLanguage (language) {
+        if (language) return (
+            <span>Language used: {this.props.repo.language}</span>
+        );
+    }
+
 }
 
 Repo.propTypes = {
     repo: PropTypes.object,
     fetchUserRepo: PropTypes.func,
-    params: PropTypes.object
+    fetchReadme: PropTypes.func,
+    params: PropTypes.object,
+    readmeInfo: PropTypes.object
 };
 
 function mapStateToProps (state) {
@@ -44,7 +66,8 @@ function mapStateToProps (state) {
         repo: state.repos.repo,
         loading: state.repos.loading,
         error: state.repos.error,
-        repos: state.repos.repos.item
+        repos: state.repos.repos.item, 
+        readmeInfo: state.readme
     };
 }
 
@@ -55,6 +78,9 @@ function mapDispatchToProps (dispatch) {
         },
         fetchRepo: (event) => {
             dispatch (fetchRepo (event));
+        },
+        fetchReadme: (user, repo) => {
+            dispatch (fetchReadme (user, repo));
         }
     };
 }

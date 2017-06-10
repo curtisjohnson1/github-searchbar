@@ -24,14 +24,14 @@ class FrontPage extends Component {
 
 FrontPage.propTypes = {
     loading: PropTypes.bool,
-    repos: PropTypes.array,
+    repos: PropTypes.object
 };
 
 function mapStateToProps (state) {
     return {
         loading: state.repos.loading,
         error: state.repos.error,
-        repos: state.repos.repos.items
+        repos: state.repos.repos
     };
 }
 

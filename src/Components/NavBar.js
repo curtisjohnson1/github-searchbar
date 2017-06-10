@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { fetchRepo } from '../actions/actions';
@@ -30,6 +31,10 @@ class NavBar extends Component {
                 >
                 Submit
                 </button>
+                <span>
+                    <span><Link to={'/'}>Home</Link></span>
+                </span>
+                    <p classID="nav-header">GitHub SearchBar</p>
             </nav>
         );
     }
