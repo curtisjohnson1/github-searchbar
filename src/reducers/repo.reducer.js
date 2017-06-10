@@ -1,8 +1,8 @@
 import * as types from '../actions/types';
 
 const initialState = {
-    repos: {},
-    repo: {},
+    readme: '',
+    readmeDetails: {},
     loading: false,
     error: null
 };
@@ -10,33 +10,28 @@ const initialState = {
 export default function (prevState = initialState, action) {
 
     switch (action.type) {
-
-        case types.FETCH_REPO_REQUEST:
-        case types.FETCH_USER_REPO_REQUEST:
+        
+        case types.FETCH_README_REQUEST:
             return Object.assign({}, prevState, {
                 loading: true,
                 error: null
             });
+        
+        case types.FETCH_README_SUCCESS: {
+            let decodeReadme = Buffer.from(action.readme.data.content, action.readme.data.encoding).toString();
+            return Object.assign({}, prevState, {
+                loading: false,
+                readmeDetails: action.readme,
+                readme: decodeReadme
+            });
+        }
 
-        case types.FETCH_REPO_SUCCESS:
-            return Object.assign({}, prevState, {
-                loading: false,
-                repos: action.data
-            });
-        
-        case types.FETCH_USER_REPO_SUCCESS:
-            return Object.assign({}, prevState, {
-                loading: false,
-                repo: action.data
-            });
-        
-        case types.FETCH_REPO_ERROR:
-        case types.FETCH_USER_REPO_ERROR:
+        case types.FETCH_README_ERROR:
             return Object.assign({}, prevState, {
                 loading: false,
                 error: action.error
             });
-
+        
         default:
             return prevState;
     }

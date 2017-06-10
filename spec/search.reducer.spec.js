@@ -54,6 +54,26 @@ describe('reducer', () => {
         expect(input).to.eql(expected);
     });
 
+    it('ensures that fetchRepo repo does not mutate state', () => {
+        const initialState = {
+            loading: false,
+            repo: {},
+            repos: {},
+            error: null
+        };
+
+        const expected = {
+            loading: true,
+            repo: {},
+            repos: {},
+            error: null
+        };
+
+        const input = reducer(initialState, actions.fetchRepoRequest());
+
+        expect(input).to.not.equal(expected);
+    });
+
     it('handles a fetchUserRepoSuccess action', () => {
         const initialState = {
             loading: true,
@@ -71,4 +91,25 @@ describe('reducer', () => {
 
         expect(input).to.eql(expected);
     });
+
+    it('ensures that fetchUserRepo reducer does not mutate state', () => {
+        const initialState = {
+            loading: false,
+            repo: {},
+            repos: {},
+            error: null
+        };
+
+        const expected = {
+            loading: true,
+            repo: {},
+            repos: {},
+            error: null
+        };
+
+        const input = reducer(initialState, actions.fetchUserRepoRequest());
+
+        expect(input).to.not.equal(expected);
+    });
+
 });

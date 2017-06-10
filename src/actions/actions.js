@@ -71,3 +71,38 @@ export function fetchUserRepo (userRepo, repoName) {
                 });
     };
 }
+
+export function fetchReadmeRequest () {
+    return {
+        type: types.FETCH_README_REQUEST
+    };
+}
+
+export function fetchReadmeSuccess (readme) {
+    return {
+        type: types.FETCH_README_SUCCESS,
+        readme
+    };
+}
+
+export function fetchReadmeError (error) {
+    return {
+        type: types.FETCH_README_ERROR,
+        error
+    };
+}
+
+export function fetchReadme (userRepo, repoName) {
+
+    return dispatch => {
+        dispatch (fetchReadmeRequest ());
+            axios
+                .get (`https://api.github.com/repos/${userRepo}/${repoName}/readme`)
+                .then (res => {    
+                    dispatch (fetchReadmeSuccess (res));
+                })
+                .catch (error => {
+                    dispatch (fetchReadmeError (error));
+                });
+    };
+}
