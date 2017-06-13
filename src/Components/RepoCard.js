@@ -36,7 +36,8 @@ RepoCard.propTypes = {
     full_name: PropTypes.string,
     language: PropTypes.string,
     description: PropTypes.string,
-    updated_at: PropTypes.string
+    updated_at: PropTypes.string,
+    stargazers_count: PropTypes.number
 };
 
 export default RepoCard;
