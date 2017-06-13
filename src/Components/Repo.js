@@ -25,8 +25,8 @@ class Repo extends Component {
 
                 <div className="card-content">
                     <div>
-                        <p>{this.checkLanguage(this.props.repo.language)}</p>
                         <ul className="repo-stats">
+                            <li><p>{this.checkLanguage(this.props.repo.language)}</p></li>
                             <li className=""><p>Issues: {this.props.repo.open_issues_count}</p></li>
                             <li className=""><p>Watchers: {this.props.repo.subscribers_count}</p></li>
                             <li className=""><p>Forks: {this.props.repo.forks_count}</p></li>
@@ -47,7 +47,7 @@ class Repo extends Component {
 
     checkLanguage (language) {
         if (language) return (
-            <span>Language used: {this.props.repo.language}</span>
+            <span>Language: {this.props.repo.language}</span>
         );
     }
 
