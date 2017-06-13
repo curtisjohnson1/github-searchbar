@@ -27,20 +27,14 @@ class Repo extends Component {
                     <div>
                         <ul className="repo-stats">
                             <li><p>{this.checkLanguage(this.props.repo.language)}</p></li>
-                            <li className=""><p>Issues: {this.props.repo.open_issues_count}</p></li>
-                            <li className=""><p>Watchers: {this.props.repo.subscribers_count}</p></li>
-                            <li className=""><p>Forks: {this.props.repo.forks_count}</p></li>
-                            <li className=""><p>Stars: {this.props.repo.stargazers_count}</p></li>
+                            <li><p>Issues: {this.props.repo.open_issues_count}</p></li>
+                            <li><p>Watchers: {this.props.repo.subscribers_count}</p></li>
+                            <li><p>Forks: {this.props.repo.forks_count}</p></li>
+                            <li><p>Stars: {this.props.repo.stargazers_count}</p></li>
                         </ul>
                     </div>
                 </div>
-                <div className="card-content">
-                    <div>
-                        <ReactMarkdown 
-                            className="repo-info"
-                            source={this.props.readmeInfo.readme}/>
-                    </div>
-                </div>
+                    {this.checkReadme(this.props.readmeInfo)}
             </div>
         );
     }
@@ -51,6 +45,15 @@ class Repo extends Component {
         );
     }
 
+    checkReadme (readme) {
+        if (readme.error === null) return (
+            <div className="card-content">
+                <ReactMarkdown
+                    className="repo-info"
+                    source={this.props.readmeInfo.readme}/>
+            </div>
+        );
+    }
 }
 
 Repo.propTypes = {
