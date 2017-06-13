@@ -5,7 +5,7 @@ import RepoCard from './RepoCard';
 
 const RepoList = (props) => {
     return (
-        <div>
+        <div className="repo-list">
             {repoCount(props.repos.total_count)}
             {generateRepoCards(props.repos.items)}
         </div>
@@ -29,7 +29,7 @@ const generateRepoCards = (repos) => {
 const repoCount = (count) => {
     if (count) return (
         <div className="count-header">
-            <h4>{count} repositories found</h4>
+            <h3>{count} repository results</h3>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { fetchRepo } from '../actions/actions';
+import logo from '../../public/d53-logo.svg';
 
 class NavBar extends Component {
     constructor (props) {
@@ -19,22 +20,25 @@ class NavBar extends Component {
     render () {
         return (
             <nav className="github-nav">
-                <input
-                    className="github-search" 
-                    type="text"
-                    placeholder="Search"
-                    value={this.state.input}
-                    onChange={this.handleInput}
-                />
-                <button 
-                    onClick={this.handleSubmit}
-                >
-                Submit
-                </button>
-                <span>
-                    <span><Link to={'/'}>Home</Link></span>
-                </span>
-                    <p classID="nav-header">GitHub SearchBar</p>
+                <div className="nav-container">
+                    <Link to={'/'}><img className="logo" src={logo}/></Link>
+                    {/*<form onSubmit={this.handleSubmit}>*/}
+                    <input
+                        className="github-search" 
+                        type="text"
+                        placeholder="Search GitHub"
+                        value={this.state.input}
+                        onChange={this.handleInput}
+                        onSubmit={this.handleSubmit}
+                    />                    
+                    {/*</form>*/}
+                    <button 
+                        onClick={this.handleSubmit}
+                    >
+                    Submit
+                    </button>
+                    {/*<p classID="nav-header">GitHub SearchBar</p>*/}
+                </div>
             </nav>
         );
     }

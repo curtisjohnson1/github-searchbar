@@ -18,15 +18,15 @@ class Repo extends Component {
 
                 <header className="card-header">
                     <div className="card-info">
-                        <a>{this.props.repo.full_name}</a>
-                        <p>{this.props.repo.description}</p>
+                        <a className="card-name">{this.props.repo.full_name}</a>
+                        <p className="card-description">{this.props.repo.description}</p>
                     </div>
                 </header>
 
                 <div className="card-content">
                     <div>
                         <p>{this.checkLanguage(this.props.repo.language)}</p>
-                        <ul className="repo-info">
+                        <ul className="repo-stats">
                             <li className=""><p>Issues: {this.props.repo.open_issues_count}</p></li>
                             <li className=""><p>Watchers: {this.props.repo.subscribers_count}</p></li>
                             <li className=""><p>Forks: {this.props.repo.forks_count}</p></li>

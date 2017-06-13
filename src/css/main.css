@@ -11,6 +11,7 @@ html {
 
 body {
 	margin: 0;
+	line-height: 1.5;
 }
 
 .github-nav {
@@ -20,22 +21,20 @@ body {
 	padding: .7em 4em;
 
 }
-.github-nav a {
-	text-decoration: none;
-	margin-left: 1em;
-	color: lightgrey;
-	font-size: 16px;	
-}
-
-.github-nav a:hover {
-    color: white;
-}
 
 .github-nav p {
 	float: right;
 	color: lightgrey;
 	font-size: 16px;
 	margin-left: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.nav-container {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 button {
@@ -45,14 +44,14 @@ button {
 .github-search {
 	border-radius: .2em;
 	background-color: rgba(255,255,255,0.125);
-	border: .05em solid rgba(255,255,255,0.125);
+	border: 0;
 	padding: .5em;
-	box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
+	box-shadow: none;
 }
-
 
 input {
     color: white;
+	width: 300px;
 }
 
 .repo {
@@ -68,7 +67,6 @@ input {
 .repo a { 
 	text-decoration: none;
 	color: #0366D6;
-    padding-left: 1.5rem;
 }
 
 .repo a:hover {
@@ -83,15 +81,21 @@ input {
 }
 
 .repo-card {
-    border: 1px solid grey;
-    border-radius: 5px;
     position: relative;
     background-color: white;
     padding: 1.5rem;
+    border-bottom: 1px #e1e4e8 solid;
+	display: flex;
+}
+
+.repo-name {
+    font-size: 20px;
+    font-weight: 600;
+	text-decoration: none;
 }
 
 .repo-name:hover {
-    color: tomato
+	text-decoration: underline;
 }
 
 .repo-info {
@@ -101,7 +105,7 @@ input {
 
 p {
     font-weight: 500;
-	font-size: .75em;
+	font-size: 14px;
 	color: #474747;
 }
 
@@ -109,8 +113,14 @@ h1, h4 {
     padding-left: 1.5rem;
 }
 
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 .count-header {
     background-color: #FAFBFC;
+    border-bottom: 1px #e1e4e8 solid;
 }
 
 .card-header {
@@ -118,11 +128,13 @@ h1, h4 {
   	background-color: #FAFBFC;
   	display: flex;
   	padding-top: 1em;
+	font-size: 20px;
+    font-weight: 600;
 	
 }
 
 .card-content {
-    border: 1px solid grey;
+    border: 1px solid #ddd;
 	width: 980px;
 	margin-right: auto;
 	margin-left: auto;
@@ -130,12 +142,48 @@ h1, h4 {
     border-radius: 5px;
     position: relative;
     background-color: white;
+	padding: 45px;
 }
 
 .app-wrapper {
     background-color: #FAFBFC;
 }
 
-.card-info {
-	margin-left: 1.5em;
+.repo-list {
+	width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.repo-card-info {
+	width: 66.66667%;
+}
+
+.repo-card-language {
+    width: 16.66667%;
+}
+
+.repo-card-stars {
+	width: 16.66667%;
+}
+
+.logo {
+    display: inline-block;
+    width: 13%;
+    vertical-align: -webkit-baseline-middle;
+    margin-right: 1.5em;
+}
+
+.card-name {
+	margin-left: 3em;
+}
+
+.card-description {
+	margin-left: 2.5em;
+}
+
+.repo-stats {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
 }
