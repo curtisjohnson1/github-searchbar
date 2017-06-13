@@ -22,19 +22,17 @@ class NavBar extends Component {
             <nav className="github-nav">
                 <div className="nav-container">
                     <Link to={'/'}><img className="logo" src={logo}/></Link>
+                    <form
+                        onSubmit={this.handleSubmit} 
+                        className="searchbar">
                     <input
                         className="github-search" 
                         type="text"
                         placeholder="Search GitHub"
                         value={this.state.input}
                         onChange={this.handleInput}
-                        onSubmit={this.handleSubmit}
                     />                    
-                    <button 
-                        onClick={this.handleSubmit}
-                    >
-                    Submit
-                    </button>
+                    </form>
                 </div>
             </nav>
         );
