@@ -67,7 +67,7 @@ export function fetchUserRepo (userRepo, repoName) {
                     dispatch (fetchUserRepoSuccess (res.data));
                 })
                 .catch (error => {
-                    dispatch (fetchUserRepoError (error));
+                    dispatch (fetchUserRepoError (error.message));
                 });
     };
 }
