@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { fetchRepo } from '../actions/actions';
@@ -33,6 +33,10 @@ class NavBar extends Component {
                         onChange={this.handleInput}
                     />                    
                     </form>
+                    <p>Pull Requests</p>
+                    <p>Issues</p>
+                    <p>Marketplace</p>
+                    <p>Gist</p>
                 </div>
             </nav>
         );
@@ -47,6 +51,7 @@ class NavBar extends Component {
     handleSubmit (event) {
         event.preventDefault();
         this.props.fetchRepo(this.state.input);
+        browserHistory.push('/');
         this.setState({ input: '' });
     }
 }

@@ -23,12 +23,11 @@ body {
 }
 
 .github-nav p {
-	float: right;
-	color: lightgrey;
-	font-size: 16px;
-	margin-left: auto;
+	color: rgba(255,255,255,0.75);
+	font-weight: 500;
 	margin-top: 0;
 	margin-bottom: 0;
+	padding: 5px 8px;
 }
 
 .nav-container {
@@ -49,11 +48,13 @@ button {
 	padding: .5em;
 	box-shadow: none;
 	margin-left: 0.5em;
+	height: 30px;
 }
 
 input {
     color: white;
 	width: 300px;
+	font-size: small;
 }
 
 .repo {

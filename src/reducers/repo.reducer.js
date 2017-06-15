@@ -18,7 +18,7 @@ export default function (prevState = initialState, action) {
             });
         
         case types.FETCH_README_SUCCESS: {
-            let decodeReadme = Buffer.from(action.readme.data.content, action.readme.data.encoding).toString();
+            const decodeReadme = Buffer.from(action.readme.content, action.readme.encoding).toString();
             return Object.assign({}, prevState, {
                 loading: false,
                 readmeDetails: action.readme,

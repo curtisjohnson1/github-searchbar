@@ -6,7 +6,7 @@ import { fetchRepo } from '../actions/actions';
 import RepoList from './RepoList';
 
 class FrontPage extends Component {
-
+    
     render () {
         return (
             <div>

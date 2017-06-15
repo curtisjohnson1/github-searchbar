@@ -99,10 +99,10 @@ export function fetchReadme (userRepo, repoName) {
             axios
                 .get (`https://api.github.com/repos/${userRepo}/${repoName}/readme`)
                 .then (res => {    
-                    dispatch (fetchReadmeSuccess (res));
+                    dispatch (fetchReadmeSuccess (res.data));
                 })
                 .catch (error => {
-                    dispatch (fetchReadmeError (error));
+                    dispatch (fetchReadmeError (error.message));
                 });
     };
 }

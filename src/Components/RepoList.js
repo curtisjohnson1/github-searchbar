@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import RepoCard from './RepoCard';
 
+
 const RepoList = (props) => {
     return (
         <div className="repo-list">
@@ -14,14 +15,14 @@ const RepoList = (props) => {
 
 const generateRepoCards = (repos) => {
     if (!repos) return (
-        <div>
-            <h1>Please search for a repo...</h1>
-        </div>
+        <div />
     );
-
     return repos.map((repo, i) => {
         return (
-            <RepoCard key={i} {...repo} />
+            <RepoCard 
+                key={i} 
+                {...repo} 
+            />
         );
     });
 };

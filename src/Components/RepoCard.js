@@ -17,14 +17,28 @@ class RepoCard extends Component {
                     <p>Updated on {this.getDate(this.props.updated_at)}</p>
                 </div>
                 <div className="repo-card-language">
-                    <p>{this.props.language}</p>
+                    <p>{this.checkLanguage(this.props.language)}</p>
                 </div>
                 <div className="repo-card-stars">
-                    <p>{this.props.stargazers_count}</p>
+                    <p>{this.checkStars(this.props.stargazers_count)}</p>
                 </div>
             </div>
         );
     }
+
+    checkStars (stars) {
+        if (stars > 0) {
+            return (
+                <span>{stars}</span>
+            );
+        }
+    }
+
+    checkLanguage (language) {
+        if (language) return (
+            <span>{language}</span>
+        );
+    }  
 
     getDate (num) {
         let date = moment(num);

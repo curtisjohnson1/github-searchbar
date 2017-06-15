@@ -8,8 +8,8 @@ import { fetchUserRepo, fetchRepo, fetchReadme } from '../actions/actions';
 class Repo extends Component {
 
     componentWillMount () {
-        this.props.fetchReadme (this.props.params.user, this.props.params.repo);
         this.props.fetchUserRepo (this.props.params.user, this.props.params.repo);
+        this.props.fetchReadme (this.props.params.user, this.props.params.repo);
     }
 
     render () {
@@ -27,10 +27,10 @@ class Repo extends Component {
                     <div>
                         <ul className="repo-stats">
                             <li><p>{this.checkLanguage(this.props.repo.language)}</p></li>
-                            <li><p>Issues: {this.props.repo.open_issues_count}</p></li>
                             <li><p>Watchers: {this.props.repo.subscribers_count}</p></li>
                             <li><p>Forks: {this.props.repo.forks_count}</p></li>
                             <li><p>Stars: {this.props.repo.stargazers_count}</p></li>
+                            <li><p>Issues: {this.props.repo.open_issues_count}</p></li>
                         </ul>
                     </div>
                 </div>
@@ -46,11 +46,11 @@ class Repo extends Component {
     }
 
     checkReadme (readme) {
-        if (readme.error === null) return (
+        if (!readme.error) return (
             <div className="card-content">
                 <ReactMarkdown
                     className="repo-info"
-                    source={this.props.readmeInfo.readme}/>
+                    source={readme.readme}/>
             </div>
         );
     }
